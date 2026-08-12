@@ -1,0 +1,94 @@
+{
+  //"$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "modules": [
+    "title",
+    "break",
+    {
+      "type": "custom",
+      "format": " ╭───────────────────────────────────────────────────╮"
+    },
+    {
+      "type": "os",
+      "key": "󰌽 OS       ",
+      "format": "{name} {version}"
+    },
+    {
+      "type": "kernel",
+      "key": " Kernel   ",
+      "format": "{sysname} {release}"
+    },
+    {
+      "type": "terminal",
+      "key": " Terminal "
+    },
+    {
+      "type": "packages",
+      "key": " Packages "
+    },
+    {
+      "type": "shell",
+      "key": " Shell    "
+    },
+    {
+      "type": "wm",
+      "key": " Windows  "
+    },
+    {
+      "type": "cpu",
+      "key": " CPU      "
+    },
+    {
+      "type": "memory",
+      "key": "󰍛 Memory   "
+    },
+    {
+      "type": "gpu",
+      "key": "󰿀 GPU      "
+    },
+    {
+      "type": "disk",
+      "key": " Disk     "
+    },
+    "break",
+    {
+      "type": "localip",
+      "key": "󰀑 Local IP ",
+      "format": "{ipv4}"
+    },
+    {
+      "type": "locale",
+      "key": " Locale   "
+    },
+    {
+      "type": "uptime",
+      "key": " Uptime   ",
+      "format": "{formatted}"
+    },
+    "break",
+    {
+      "type": "colors",
+      "symbol": "circle",
+      "paddingLeft": 4
+    },
+    {
+      "type": "custom",
+      "format": " ╰──────────────────────────────────────────────────╯"
+    }
+  ],
+  "logo": {
+    "type": "kitty-direct",
+    "source": "~/.config/fastfetch/popipo.png",
+    "width": 45,
+    "height": 20
+  },
+  "display": {
+    "separator": ": ",     
+    "color": {
+        "keys": "blue",
+        "title": "blue"
+    },
+    "key": {
+      "paddingLeft": 4
+    }
+  }
+}

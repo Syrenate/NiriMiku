@@ -1,0 +1,15 @@
+{
+	"mpris": {
+		"format": "{title} - {artist}  {player_icon}",
+		"player-icons": {
+			"default": "󰏤"
+		},
+		"format-paused": "{title} - {artist}  {status_icon}",
+		"status-icons": {
+			"paused": "󰐊"
+		},
+		"max-length": 1000,
+		"tooltip-format": "Playing: {title} - {artist}",
+		"tooltip-format-paused": "Paused: {title} - {artist}"
+	}
+}
