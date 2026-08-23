@@ -7,10 +7,10 @@ A collection of wayland configuration files for various packages on niri. Main p
 
 ## Showcase
 Overview Workspace
-![Main/overview workspace](res/HomePage.png)
+![Main/overview workspace](res/landing.png)
 
 Development Workspace
-![Development workspace](res/DevPage.png)
+![Development workspace](res/dev.png)
 
 ## Instructions
 This repo is by no means a complete niri configuration; it simply contains various configuration folders for the niri programs I run. If you'd like to replicate any features:
