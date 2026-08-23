@@ -54,15 +54,25 @@ layout {
     }
 }
 
+
+
 workspace "general"
 workspace "dev"
 workspace "browser"
 
 window-rule {
+    match app-id="Spotify"
+
+    opacity 0.6
+    open-on-workspace "general"
+}
+
+window-rule {
     match app-id="code"
     match app-id="Godot"
     match app-id="Pixelorama"
-    match app-id="Spotify"
+    match title="nvim"
+    match title="yazi"
     
     default-column-width { proportion 1.0; }
     open-on-workspace "dev"
@@ -93,23 +103,23 @@ window-rule {   // Aesthetics for all windows.
 }
 
 // Specific Window Rules
-window-rule {     // All non-video apps are opaque.
-    exclude "app-id"="firefox"
+window-rule {     // All non-video/design apps are opaque.
+    exclude app-id="firefox"
     exclude app-id="Godot"
     exclude app-id="Pixelorama"
     exclude title="ImageMagick"
+    exclude title="Sudoku Solver"
+    exclude app-id="krita"
+    exclude app-id="Sudoku Solver GUI"
+    exclude app-id="Spotify"
 
 
-    opacity 0.75
+    opacity 0.85
 }
 
 window-rule {
-    match app-id="code"
-    match app-id="Godot"
-    match app-id="Pixelorama"
-    match app-id="Spotify"
-    match app-id="discord"
-    match app-id="Firefox"
+    exclude app-id="kitty"
+    exclude app-id="Spotify"
 
     background-effect {
         blur true
@@ -186,8 +196,9 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn-sh "kitty --hold fastfetch"; }
     Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi -show drun -theme ~/.config/rofi/launchers/type-1/style-1"; }
-    Mod+Y hotkey-overlay-title="Open file manager: yazi" { spawn-sh "kitty --hold yazi"; }
-    Mod+N hotkey-overlay-title="Open the notification center: swaync" { spawn-sh "exec swaync-client -t -sw"; }
+    Mod+Y hotkey-overlay-title="Open file manager: yazi" { spawn-sh "kitty --title 'yazi' yazi"; }
+    Mod+numbersign hotkey-overlay-title="Open a neoVim instance" { spawn-sh "kitty --title 'nvim' nvim"; }
+    Mod+Slash hotkey-overlay-title="Open the notification center: swaync" { spawn-sh "exec swaync-client -t -sw"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
@@ -215,8 +226,8 @@ binds {
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    Mod+Alt+BracketRight allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    Mod+Alt+BracketLeft allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,

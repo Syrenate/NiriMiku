@@ -3,8 +3,12 @@
 		"persistent-workspaces": {
 			"*": 5
 		},
-		"format": "{icon}",
+		"format": "{icon} {name}",
 		"format-icons": {
+			"general": " ",
+			"dev": " ",
+			"browser": "󰖟 ",
+			
 			"active": "",
 			"default": ""
 		},

@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+#
+# Install mechabar dependencies
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    August 22, 2025
+# License: MIT
+
+RED="\e[31m"
+GREEN="\e[32m"
+BLUE="\e[34m"
+RESET="\e[39m"
+
+debug() {
+	printf "%b\n" "$*" >&2
+}
+
+main() {
+	debug "${BLUE}Installing dependencies...${RESET}"
+
+	local package
+	for package in bluez-utils brightnessctl fzf networkmanager pacman-contrib \
+		otf-commit-mono-nerd
+	do
+		if pacman -Qi "$package" &>/dev/null; then
+			debug "${GREEN}/${RESET} $package"
+		else
+			debug "${BLUE}*${RESET} $package...\n"
+
+			if sudo pacman -S --noconfirm "$package"; then
+				debug "\n${GREEN}+${RESET} $package"
+			else
+				debug "\n${RED}x${RESET} $package"
+				((ERRORS += 1))
+			fi
+		fi
+	done
+
+	debug "\n${BLUE}Restarting Waybar...${RESET}"
+
+	if ! (systemctl --user is-enabled waybar.service &&
+		systemctl --user restart waybar.service) &>/dev/null; then
+		pkill waybar
+		waybar &>/dev/null &
+		disown
+	fi
+
+	if ((ERRORS > 0)); then
+		debug "\nInstallation completed with ${RED}$ERRORS error(s)${RESET}"
+	else
+		debug "\n${GREEN}Installation complete!${RESET}"
+	fi
+}
+
+main
